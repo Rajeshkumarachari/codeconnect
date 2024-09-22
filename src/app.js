@@ -1,10 +1,15 @@
 const express = require("express");
-
+const { adminAuth } = require("./middlewares/auth.js");
 const app = express();
 
-app.get("/user/:userid/:name/:password", (req, res) => {
-  console.log(req.params);
-  res.send({ name: "rajesh", role: "React" });
+app.get("/getUserData", (req, res) => {
+  res.send("All data sent");
+});
+app.arguments("/", (err, req, res, next) => {
+  if (err) {
+    res.status(500).send("something went wrong");
+  }
+  [];
 });
 
 app.listen(3001, () => {
